@@ -22,3 +22,24 @@ export interface Category {
   slug: string;
   icon: string;
 }
+
+export interface Order {
+  id: string;
+  stripe_payment_intent_id: string;
+  customer_email: string;
+  customer_name: string;
+  items: OrderItem[];
+  subtotal: number;
+  shipping: number;
+  tax: number;
+  total: number;
+  status: string;
+  created_at: string;
+}
+
+export interface OrderItem {
+  product_id: string;
+  product_name: string;
+  price: number;
+  quantity: number;
+}

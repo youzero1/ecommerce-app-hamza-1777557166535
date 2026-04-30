@@ -14,7 +14,10 @@
     "react-dom": "^18.3.1",
     "@supabase/supabase-js": "^2.49.1",
     "@supabase/ssr": "^0.5.2",
-    "lucide-react": "^0.454.0"
+    "lucide-react": "^0.454.0",
+    "stripe": "^14.14.0",
+    "@stripe/stripe-js": "^2.4.0",
+    "@stripe/react-stripe-js": "^2.4.0"
   },
   "devDependencies": {
     "typescript": "^5.7.3",

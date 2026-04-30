@@ -27,6 +27,10 @@ export default function CartPage() {
     );
   }
 
+  const shipping = totalPrice >= 50 ? 0 : 9.99;
+  const tax = totalPrice * 0.08;
+  const total = totalPrice + shipping + tax;
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
@@ -68,27 +72,20 @@ export default function CartPage() {
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Shipping</span>
                 <span className="font-medium text-green-600">
-                  {totalPrice >= 50 ? 'Free' : '$9.99'}
+                  {shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}
                 </span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Tax (estimated)</span>
                 <span className="font-medium">
-                  ${(totalPrice * 0.08).toFixed(2)}
+                  ${tax.toFixed(2)}
                 </span>
               </div>
               <div className="border-t border-gray-200 pt-3">
                 <div className="flex justify-between">
                   <span className="font-bold text-gray-900">Total</span>
                   <span className="font-bold text-gray-900 text-lg">
-                    $
-                    {
-                      (
-                        totalPrice +
-                        (totalPrice >= 50 ? 0 : 9.99) +
-                        totalPrice * 0.08
-                      ).toFixed(2)
-                    }
+                    ${total.toFixed(2)}
                   </span>
                 </div>
               </div>
@@ -100,10 +97,10 @@ export default function CartPage() {
               </p>
             )}
 
-            <button className="w-full btn-primary mt-6 gap-2">
+            <Link href="/checkout" className="w-full btn-primary mt-6 gap-2">
               <CreditCard className="h-4 w-4" />
               Proceed to Checkout
-            </button>
+            </Link>
 
             <Link
               href="/products"
